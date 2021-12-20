@@ -7,52 +7,6 @@
 
 import UIKit
 
-//@IBDesignable class ProgressBar: UIView {
-//
-//    var progress: CGFloat = 0 {
-//        didSet { setNeedsDisplay() }
-//    }
-//
-//    private var progressBarLayer = CAShapeLayer()
-//    private var backgroundMask = CAShapeLayer()
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setupLayers()
-//
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        setupLayers()
-//    }
-//
-//    private func setupLayers() {
-//        backgroundMask.lineWidth = 5
-//        backgroundMask.fillColor = nil
-//        backgroundMask.strokeColor = UIColor.systemPink.cgColor
-//        layer.mask = backgroundMask
-//
-//        progressBarLayer.lineWidth = 5
-//        progressBarLayer.fillColor = nil
-//        layer.addSublayer(progressBarLayer)
-//        layer.transform = CATransform3DMakeRotation(CGFloat(90 * Double.pi / 180), 0, 0, -1)
-//    }
-//
-//    override func draw(_ rect: CGRect) {
-//        let circlePath = UIBezierPath(ovalIn: rect.insetBy(dx: 5 / 2, dy: 5 / 2))
-//        backgroundMask.path = circlePath.cgPath
-//
-//        progressBarLayer.path = circlePath.cgPath
-//        progressBarLayer.lineCap = .round
-//        progressBarLayer.strokeStart = 0
-//        progressBarLayer.strokeEnd = progress
-//        progressBarLayer.strokeColor = UIColor.systemRed.cgColor
-//    }
-//}
-
-
-
 enum State {
     case work
     case rest
@@ -60,19 +14,19 @@ enum State {
 
 class ViewController: UIViewController {
 
-    private let progressBarLayer = CAShapeLayer()
-
+//    private let progressBarLayer = CAShapeLayer()
     private lazy var isTimerRunning = false
     private lazy var state: State = .rest
-    private  var progress : CGFloat = CGFloat(360) {
+    private  var progress : CGFloat = CGFloat(-90) {
        didSet {
-            createCircleProgressBar(oldValue)
+           createCircleProgressBar(oldValue)
+           print(oldValue)
         }
     }
 
     private lazy var counterLabel: UILabel = {
         let counterLabel = UILabel()
-        counterLabel.text = "25:00"
+        counterLabel.text = Strings.counterLabel
         counterLabel.font = .systemFont(ofSize: 55)
         counterLabel.textColor = .systemRed
         counterLabel.textAlignment = .center
@@ -80,10 +34,11 @@ class ViewController: UIViewController {
         return counterLabel
     }()
 
-    private lazy var switchStateButton: UIButton = {
+    private lazy var startStopButton: UIButton = {
         let button = UIButton()
         let sfSymbolsConfiguration =  UIImage.SymbolConfiguration(pointSize: 55)
         button.setImage(UIImage(systemName: "play", withConfiguration: sfSymbolsConfiguration)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
 
         return button
     }()
@@ -96,20 +51,6 @@ class ViewController: UIViewController {
 
         return stackView
     }()
-
-//    private lazy var progressBar: ProgressBar = {
-//        var progressBar = ProgressBar()
-//
-//        var progressBarLayer : CAShapeLayer = CAShapeLayer()
-//
-//        progressBarLayer.lineCap = CAShapeLayerLineCap.round
-//        progressBarLayer.fillColor = UIColor.clear.cgColor
-//        progressBarLayer.strokeColor = UIColor.red.cgColor
-//        progressBarLayer.lineWidth = 5
-//
-//        return progressBarLayer
-//    }()
-
 
     private lazy var progressBar: CAShapeLayer = {
         let progressBarLayer = CAShapeLayer()
@@ -143,9 +84,6 @@ class ViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         setupView()
-//        createCircleProgressBar()
-
-
     }
 
     // MARK: Settings
@@ -156,7 +94,7 @@ class ViewController: UIViewController {
 
         view.addSubview(stackView)
         stackView.addArrangedSubview(counterLabel)
-        stackView.addArrangedSubview(switchStateButton)
+        stackView.addArrangedSubview(startStopButton)
     }
 
     private func setupLayout() {
@@ -178,12 +116,42 @@ class ViewController: UIViewController {
     }
 
     private func startTimer() {
+        var minutesInLabel = Int(counterLabel.text!.dropLast(3))!
+        var secondsInLabeel = Int(counterLabel.text!.dropFirst(3))!
+        progress += 360 / (CGFloat(minutesInLabel) * 60)
 
-        for i in -90...270 {
-            progress = CGFloat(i)
-        }
+        _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] timer in
+            if progress <= 270 {
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "mm:ss"
+//                print(dateFormatter.date(from: counterLabel.text!)!)
+//                print(dateFormatter.date(from: "00:01")!)
+//                counterLabel.text = dateFormatter.string(from: (dateFormatter.date(from: counterLabel.text!)! - dateFormatter.date(from: "00:01")!))
+                if secondsInLabeel == 0 {
+                    secondsInLabeel = 59
+                    minutesInLabel -= 1
+                } else {
+                    secondsInLabeel -= 1
+                }
+                if (minutesInLabel != 0) && (secondsInLabeel != 0) {
+                    if secondsInLabeel < 10 {
+                        counterLabel.text = String(minutesInLabel) + ":0" + String(secondsInLabeel)
+                    } else {
+                        counterLabel.text = String(minutesInLabel) + ":" + String(secondsInLabeel)
+                    }
+                } else {
+                    counterLabel.text = "00:00"
+                }
+                progress += 360 / 15
+                print("1")
+            }
+        })
     }
 
+    @objc func buttonAction(sender: UIButton) {
+        startTimer()
+        print("Button tapped")
+    }
 }
 
 //MARK: Constants
@@ -194,5 +162,5 @@ enum Metrics {
 
 
 enum Strings {
-
+    static let counterLabel = "25:00"
 }
