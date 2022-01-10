@@ -144,7 +144,7 @@ class ViewController: UIViewController {
         _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] timer in
             // Остановка таймера когда нажимают Паузу
             // Но тут проблема - почему то дважды срабатывает, и если быстро тыкать Старт/Пауза, то сбивается прогрессбар
-            if isInProgress == false {
+            guard isInProgress else {
                 timer.invalidate()
                 print("timer is invalidated")
                 return
@@ -152,7 +152,9 @@ class ViewController: UIViewController {
 
             // занимаемся изменением UI пока прогресс бар не заполнился
             if progress <= Metrics.progressBarEndPosition {
+                print("inside")
                 // Так как время работы и отдыха разное, прогрессбар сдивгается на разное значение, вычисляем величину свдига из начальных значений таймера для работы и отдыха
+                // Если часто долбить кнопку Старт/Стоп вызывается лишний раз
                 if state == .work {
                     progress += Metrics.fullCircle / (CGFloat(Float(Strings.counterLabelWorkTime.dropLast(3))!) * Metrics.secInMin + CGFloat(Float(Strings.counterLabelWorkTime.dropFirst(3))!))
                 } else {
@@ -203,7 +205,6 @@ class ViewController: UIViewController {
                                 counterLabel.text = Strings.counterLabelRestTime
                                 isInProgress = false
                                 invertColors()
-//                                progress = Metrics.progressBarStartPosition
                                 timer.invalidate()
                             case .rest:
                                 state = .work
@@ -211,13 +212,10 @@ class ViewController: UIViewController {
                                 counterLabel.text = Strings.counterLabelWorkTime
                                 isInProgress = false
                                 invertColors()
-//                                progress = Metrics.progressBarStartPosition
                                 timer.invalidate()
                         }
                     }
                 }
-
-
             }
         })
     }
