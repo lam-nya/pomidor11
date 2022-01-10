@@ -7,24 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7808E08F277D56D0006B68E9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808E08E277D56D0006B68E9 /* Timer.swift */; };
+		7808E091277D570A006B68E9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808E090277D570A006B68E9 /* TimerView.swift */; };
+		7808E09D2782D47C006B68E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808E09C2782D47C006B68E9 /* Main.storyboard */; };
 		7828675A2766765E0060A2CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782867592766765E0060A2CD /* AppDelegate.swift */; };
 		7828675C2766765E0060A2CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828675B2766765E0060A2CD /* SceneDelegate.swift */; };
 		7828675E2766765E0060A2CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828675D2766765E0060A2CD /* ViewController.swift */; };
-		782867612766765E0060A2CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7828675F2766765E0060A2CD /* Main.storyboard */; };
 		782867642766765E0060A2CD /* Pomidor11.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 782867622766765E0060A2CD /* Pomidor11.xcdatamodeld */; };
 		78286766276676610060A2CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78286765276676610060A2CD /* Assets.xcassets */; };
-		78286769276676610060A2CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78286767276676610060A2CD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7808E08E277D56D0006B68E9 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		7808E090277D570A006B68E9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		7808E09C2782D47C006B68E9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		782867562766765E0060A2CD /* Pomidor11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomidor11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		782867592766765E0060A2CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7828675B2766765E0060A2CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7828675D2766765E0060A2CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		782867602766765E0060A2CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		782867632766765E0060A2CD /* Pomidor11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomidor11.xcdatamodel; sourceTree = "<group>"; };
 		78286765276676610060A2CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		78286768276676610060A2CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7828676A276676610060A2CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +41,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7808E087277D55EC006B68E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7808E090277D570A006B68E9 /* TimerView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7808E08B277D5654006B68E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7808E08E277D56D0006B68E9 /* Timer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7808E08D277D5682006B68E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				782867592766765E0060A2CD /* AppDelegate.swift */,
+				7808E09C2782D47C006B68E9 /* Main.storyboard */,
+				7828675B2766765E0060A2CD /* SceneDelegate.swift */,
+				78286765276676610060A2CD /* Assets.xcassets */,
+				7828676A276676610060A2CD /* Info.plist */,
+				782867622766765E0060A2CD /* Pomidor11.xcdatamodeld */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7808E092277D572A006B68E9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7828675D2766765E0060A2CD /* ViewController.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7808E097277D5A04006B68E9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7808E08B277D5654006B68E9 /* Models */,
+				7808E087277D55EC006B68E9 /* Views */,
+				7808E092277D572A006B68E9 /* ViewModels */,
+				7808E08D277D5682006B68E9 /* Supporting Files */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		7808E098277D5A0D006B68E9 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				7808E099277D5A1F006B68E9 /* Models */,
+				7808E09A277D5A24006B68E9 /* Views */,
+				7808E09B277D5A2E006B68E9 /* ViewModels */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		7808E099277D5A1F006B68E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7808E09A277D5A24006B68E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7808E09B277D5A2E006B68E9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			path = Other;
+			sourceTree = "<group>";
+		};
 		7828674D2766765D0060A2CD = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +140,8 @@
 		782867582766765E0060A2CD /* Pomidor11 */ = {
 			isa = PBXGroup;
 			children = (
-				782867592766765E0060A2CD /* AppDelegate.swift */,
-				7828675B2766765E0060A2CD /* SceneDelegate.swift */,
-				7828675D2766765E0060A2CD /* ViewController.swift */,
-				7828675F2766765E0060A2CD /* Main.storyboard */,
-				78286765276676610060A2CD /* Assets.xcassets */,
-				78286767276676610060A2CD /* LaunchScreen.storyboard */,
-				7828676A276676610060A2CD /* Info.plist */,
-				782867622766765E0060A2CD /* Pomidor11.xcdatamodeld */,
+				7808E097277D5A04006B68E9 /* Core */,
+				7808E098277D5A0D006B68E9 /* Other */,
 			);
 			path = Pomidor11;
 			sourceTree = "<group>";
@@ -128,9 +204,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78286769276676610060A2CD /* LaunchScreen.storyboard in Resources */,
 				78286766276676610060A2CD /* Assets.xcassets in Resources */,
-				782867612766765E0060A2CD /* Main.storyboard in Resources */,
+				7808E09D2782D47C006B68E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,33 +216,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7808E091277D570A006B68E9 /* TimerView.swift in Sources */,
 				7828675E2766765E0060A2CD /* ViewController.swift in Sources */,
 				7828675A2766765E0060A2CD /* AppDelegate.swift in Sources */,
 				782867642766765E0060A2CD /* Pomidor11.xcdatamodeld in Sources */,
+				7808E08F277D56D0006B68E9 /* Timer.swift in Sources */,
 				7828675C2766765E0060A2CD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		7828675F2766765E0060A2CD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				782867602766765E0060A2CD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		78286767276676610060A2CD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				78286768276676610060A2CD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7828676B276676610060A2CD /* Debug */ = {
